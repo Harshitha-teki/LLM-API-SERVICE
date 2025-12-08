@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  llm-api:
+    # Build the image using the Dockerfile in the current directory
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Load environment variables from the .env file
+    env_file:
+      - .env
+    # Map the host port 8000 to the container port 8000
+    ports:
+      - "8000:8000"
+    # Restart the container if it fails (production feature)
+    restart: always
